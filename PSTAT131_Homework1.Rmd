@@ -51,7 +51,13 @@ Based on Lecture: Course Overview and Introduction slide 38, The two model types
 
 (HELP what is bias-variance tradeoff)  
 
-### Question 6  HELP  
+### Question 6  HELP 
+
+"Given a voter’s profile/data, how likely is it that they will vote in favor of the candidate?"  
+This question is predictive because the campaign is attempting to predict the likelihood of the voter voting in favor of the candidate based on the features (predictors) presented in their profile/data. The aim is to predict Y, the likelihood that the voter will vote in favor of the candidate, with minimum reducible error (which is what a predictive model is from Lecture: Course Overview and Introduction slide 39).  
+
+"How would a voter’s likelihood of support for the candidate change if they had personal contact with the candidate?"  
+This question is inferential because the campaign is attempting to see how changing a specific feature related to the voter would affect their likelihood to support the candidate. Rather than using all features to best predict the voter's likelihood of supporting the candidate, the campaign is questioning how manipulating this one feature may affect the outcome. The aim is to test the relationship between the outcome (likelihood to vote in support of the voter) and a predictor (whether they had personal contact with the candidate) to see if any possible causal claims can be made (which is what an inferential model is from Lecture: Course Overview and Introduction slide 39).  
 
 ## Exploratory Data Analysis  
 
