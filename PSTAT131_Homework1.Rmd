@@ -9,11 +9,6 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r}
-library(tidyverse)
-library(ISLR)
-```
-
 # Homework 1  
 
 ## Machine Learning Main Ideas  
@@ -60,7 +55,11 @@ This question is predictive because the campaign is attempting to predict the li
 This question is inferential because the campaign is attempting to see how changing a specific feature related to the voter would affect their likelihood to support the candidate. Rather than using all features to best predict the voter's likelihood of supporting the candidate, the campaign is questioning how manipulating this one feature may affect the outcome. The aim is to test the relationship between the outcome (likelihood to vote in support of the voter) and a predictor (whether they had personal contact with the candidate) to see if any possible causal claims can be made (which is what an inferential model is from Lecture: Course Overview and Introduction slide 39).  
 
 ## Exploratory Data Analysis  
-
+**Loading the tidyverse and other packages:**  
+```{r}
+library(tidyverse)
+library(ISLR)
+```
 
 
 
