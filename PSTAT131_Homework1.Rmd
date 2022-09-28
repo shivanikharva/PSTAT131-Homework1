@@ -9,3 +9,48 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r}
+library(tidyverse)
+library(ISLR)
+```
+
+# Homework 1  
+
+## Machine Learning Main Ideas  
+
+### Question 1  
+
+From the textbook page 26, supervised learning is when, for each observation of the predictor measurements $x_{i}$, ${i}$ = 1,...,n, there is an associated response measurement $y_{i}$. Models fitted to supervised learning tend to relate the response to the predictors. However, according to the textbook page 26, unsupervised learning is when, for each observation $i$,= 1,...,n, we observe a vector of measurements $x_{i}$, but no associated response $y_{i}$. We do not have a response variable that can supervise out analysis.  
+
+Supervised and unsupervised learning are mainly different due to the existence of a response variable for supervised learning and the nonexistence of a response variable for unsupervised learning.  
+
+### Question 2  
+
+From the textbook page 28, regression models are those based on problems with a quantitative (numerical), response (ex: linear regression) whereas classification models are those based on problems involving a qualitative (one with K different categories) response (ex: logistic regression).  
+
+These two models are both used in machine learning and often, the type of model to be used may be decided based on whether the response is qualitative (classification) or quantitative (regression). However, according to the textbook page 29, whether the predictors are qualitative or quantitative is less important because many statistical methods can be applied regardless of the predictor variable type with proper coding for qualitative predictors in advance.  
+
+### Question 3   HELP
+what it mean by metric????  
+
+### Question 4   HELP
+A descriptive model will give you a summary of the observed data by presenting existing relationships between the predictors and the responses.  
+An inferential model will  
+
+A predictive model will use the relationships within the observed data to predict future outcomes.  
+
+### Question 5  HELP
+
+Mechanistic means to use theories to predict outcomes. Empirically-driven means to use existing or known data to develop theories. These two types of predictive modeling are different because mechanistic predictive models use theory to guide the development of data, but empirically-driven models use existing data to guide the development of theories. HELP WITH LAST PART  
+
+In general, empirically-driven is easier to understand because there is existing data and reasoning behind the model that can be used to support the outcome developed. However, with mechanistic, it is required to make assumptions about models that may or may not be true.  
+
+bias-variance tradeoff HELP  
+
+### Question 6  HELP  
+
+## Exploratory Data Analysis  
+
+
+
+
