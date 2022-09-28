@@ -59,7 +59,40 @@ This question is inferential because the campaign is attempting to see how chang
 ```{r}
 library(tidyverse)
 library(ISLR)
+library(ggplot2)
+data(mpg)
 ```
+
+### Exercise 1
+```{r}
+hwy_hist <- ggplot(mpg, aes(hwy)) +
+  geom_histogram()
+  
+hwy_hist
+```
+**Describe:**  
+The histogram of highway miles per gallon is generally right skewed and bimodal. The two peaks are around 17 mpg and 27 mpg.  
+
+### Exercise 2  (HELP)
+```{r}
+hwy_cty_scatter <- ggplot(mpg, aes(x=hwy, y=cty)) +
+    geom_point()
+
+hwy_cty_scatter
+```
+**Describe:**  
+There is a strong positive relationship between hwy and cty. This means that, as the highway miles per gallon increases, the city miles per gallon also increases. Intuitively, this makes sense because those who get more mpg in any given city will also get more mpg on the highway.  
+
+### Exercise 3  
+```{r}
+manufacturer_bar <- ggplot(mpg, aes(y=manufacturer)) +
+  geom_bar()
+
+manufacturer_bar
+```
+
+
+
 
 
 
