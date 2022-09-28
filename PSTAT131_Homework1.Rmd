@@ -20,32 +20,36 @@ library(ISLR)
 
 ### Question 1  
 
-From the textbook page 26, supervised learning is when, for each observation of the predictor measurements $x_{i}$, ${i}$ = 1,...,n, there is an associated response measurement $y_{i}$. Models fitted to supervised learning tend to relate the response to the predictors. However, according to the textbook page 26, unsupervised learning is when, for each observation $i$,= 1,...,n, we observe a vector of measurements $x_{i}$, but no associated response $y_{i}$. We do not have a response variable that can supervise out analysis.  
+From the textbook page 26, supervised learning is when, for each observation of the predictor measurements $x_{i}$, ${i}$ = 1,...,n, there is an associated response measurement $y_{i}$. In this case, the response is the supervisor. Models fitted to supervised learning tend to relate the response to the predictors. However, according to the textbook page 26, unsupervised learning is when, for each observation $i$,= 1,...,n, we observe a vector of measurements $x_{i}$, but no associated response $y_{i}$. We do not have a response variable that can supervise our analysis.  
 
-Supervised and unsupervised learning are mainly different due to the existence of a response variable for supervised learning and the nonexistence of a response variable for unsupervised learning.  
+Supervised and unsupervised learning are mainly different due to the existence of a response variable (the supervisor) for supervised learning and the nonexistence of a response variable (no supervisor) for unsupervised learning.  
 
 ### Question 2  
 
-From the textbook page 28, regression models are those based on problems with a quantitative (numerical), response (ex: linear regression) whereas classification models are those based on problems involving a qualitative (one with K different categories) response (ex: logistic regression).  
+From the textbook page 28, regression models are those based on problems with a quantitative/numerical response whereas classification models are those based on problems involving a qualitative/categorical response (one with K different categories) .  
 
-These two models are both used in machine learning and often, the type of model to be used may be decided based on whether the response is qualitative (classification) or quantitative (regression). However, according to the textbook page 29, whether the predictors are qualitative or quantitative is less important because many statistical methods can be applied regardless of the predictor variable type with proper coding for qualitative predictors in advance.  
+According to textbook page 29, these two models are both used in machine learning and often, the type of model to be used may be decided based on whether the response is qualitative (classification) or quantitative (regression). However, as mentioned on textbook page 29, whether the predictors are qualitative or quantitative is less important because many statistical methods can be applied regardless of the predictor variable type with proper coding for qualitative predictors in advance.  
 
 ### Question 3   HELP
-what it mean by metric????  
+(HELP what it mean by metric????)  
 
-### Question 4   HELP
-A descriptive model will give you a summary of the observed data by presenting existing relationships between the predictors and the responses.  
-An inferential model will  
+### Question 4   
 
-A predictive model will use the relationships within the observed data to predict future outcomes.  
+**Descriptive models**: According to Lecture: Course Overview and Introduction slide 39, descriptive models visually illustrate trends in data. For example, using a line on a scatterplot is a descriptive model.
+
+**Inferential models**: From Lecture: Course Overview and Introduction slide 39, inferential models aim to test theories. We are asking what features of the data are significant and attempting to learn whether there are any causal claims we can make. Inferential models aim to state a relationship between the outcome and the predictor(s).  
+
+**Predictive models**: Based on Lecture: Course Overview and Introduction slide 39, predictive models aim to predict Y (the response) with minimum reducible error. Predictive models aim to determine what combination of features (predictors) fits the best. These models are not focusing on hypothesis tests.  
 
 ### Question 5  HELP
 
-Mechanistic means to use theories to predict outcomes. Empirically-driven means to use existing or known data to develop theories. These two types of predictive modeling are different because mechanistic predictive models use theory to guide the development of data, but empirically-driven models use existing data to guide the development of theories. HELP WITH LAST PART  
+Mechanistic (aka parametric) predictive models assume that there are some parameters involved. According to Lecture: Course Overview and Introduction slide 38, mechanistic predictive models assume a parametric form for f, such as assuming f is a linear function. However, this means that this type of predictive model almost never actually matched the true unknown f. According to Lecture: Course Overview and Introduction slide 38, empirically-driven (non-parametric) predictive models do not make any assumptions about f and do not assume any parameters. Because of this, these type of predictive models require a larger number of observations.  
 
-In general, empirically-driven is easier to understand because there is existing data and reasoning behind the model that can be used to support the outcome developed. However, with mechanistic, it is required to make assumptions about models that may or may not be true.  
+Based on Lecture: Course Overview and Introduction slide 38, The two model types are different because the mechanistic type assumes parameters and a parametric form of f whereas the empirically-driven type does not make any assumptions about parameters or f. Also, mechanistic model types require fewer observations than empirically-driven model types. However, according to Lecture: Course Overview and Introduction slide 38, the two model types can be similar in that they can both have greater flexibility. If more parameters are added in a mechanistic type model, the model will have more flexibility. For the empirically-driven model type, however, the model is much more flexible by default. Also, these two model types may both lead to overfitting. In a mechanistic type model, if there are too many parameters, the model may become so flexible that it also fits random noise, which is overfitting. In an empirically-drive type model, since the model type is already much more flexible by default, it is more susceptible to overfitting by default as well.    
 
-bias-variance tradeoff HELP  
+(HELP IS THIS JUST OPINION???)Mechanistic model is easier to understand because assumptions can be made about the model whereas in empirically-driven models, everything must be deduced from the data. 
+
+(HELP what is bias-variance tradeoff)  
 
 ### Question 6  HELP  
 
