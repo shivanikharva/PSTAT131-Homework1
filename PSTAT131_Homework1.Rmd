@@ -60,6 +60,7 @@ This question is inferential because the campaign is attempting to see how chang
 library(tidyverse)
 library(ISLR)
 library(ggplot2)
+library(corrplot)
 data(mpg)
 ```
 
@@ -83,16 +84,35 @@ hwy_cty_scatter
 **Describe:**  
 There is a strong positive relationship between hwy and cty. This means that, as the highway miles per gallon increases, the city miles per gallon also increases. Intuitively, this makes sense because those who get more mpg in any given city will also get more mpg on the highway.  
 
-### Exercise 3  
+### Exercise 3  HELP (descending order??)
 ```{r}
 manufacturer_bar <- ggplot(mpg, aes(y=manufacturer)) +
   geom_bar()
 
+#NEED TO USE REORDER() WITHIN AES()? --> HOWWW
+
 manufacturer_bar
 ```
 
+Dodge produced the most cars. Lincoln produced the least cars.  
 
+### Exercise 4  HELP WITH EXPLANATION
+```{r}
+hwy_cyl_boxplot <- ggplot(mpg, aes(x=hwy, group=cyl, fill=cyl)) +
+  geom_boxplot()
 
+hwy_cyl_boxplot
+```
+There is an apparent pattern shown with the boxplots. The highway miles per gallon appear to generally decrease as the cylinder count increases. The first quartile and median of the highway miles per gallon appear to decrease as each cylinder count increases. However, for the third quartile, the highway miles per gallon decrease as each cylinder count increases except at the 5 cylinder count.  (DO I NEED TO SAY ALL THIS?? can i just stop at second sentence?)  
 
+### Exercise 5  HELP(doing it right?? year??)
+```{r}
+head(mpg)
+M <- cor(mpg[, !(names(mpg) %in% c("manufacturer", "model", "trans", "drv","fl", "class"))])
+corrplot(M,  method="square", type="lower", diag=FALSE)
+```
+cyl (number of cylinders) & displ (engine displacement) and hwy (highway miles per gallon) & cty (city miles per gallon) appear to be negatively correlated. According to Wikipedia, engine displacement is the measure of cylinder volume swept by all of the pistons of a piston engine, without including the combustion chamber. So, it would make sense that, as cyl increases, displ increases because there is more cylinder volume with more cylinders. Also, it makes sense that hwy and cty are positively correlated because, if individuals in certain cities are getting more miles per gallon on the highway, those same individuals are getting more miles per gallon in their respective cities.  
 
+cty & displ, hwy & displ, cty & cyl, and hwy & cyl are all negatively correlated. According to Wikipedia, the lower the engine displacement, the less fuel an engine may consume. Therefore, it makes sense that cty & displ as well as hwy & displ are negatively correlated. Those with greater engine displacement consume more fuel, so they get fewer miles per gallon. This applies both on the highway and in their respective cities. So, as displ increases, hwy and cty naturally decrease. Also, for a similar reason, it makes sense that cty & cyl and hwy & cyl are negatively correlated because cyl & displ are positively correlated. So, a greater number of cylinders (which is associated with greater engine displacement) would lead to more fuel consumption. It makes sense that cty & cyl and hwy & cyl are negatively correlated because cars with a greater number of cylinders get fewer miles per gallon on the highway and in their respective cities.  
 
+*Note*: I say "respective cities" here because, as mentioned before the cars that get high highway miles per gallon are also getting high city miles per gallon in their respective cities.  
