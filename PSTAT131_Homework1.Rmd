@@ -26,7 +26,8 @@ From the textbook page 28, regression models are those based on problems with a 
 According to textbook page 29, these two models are both used in machine learning and often, the type of model to be used may be decided based on whether the response is qualitative (classification) or quantitative (regression). However, as mentioned on textbook page 29, whether the predictors are qualitative or quantitative is less important because many statistical methods can be applied regardless of the predictor variable type with proper coding for qualitative predictors in advance.  
 
 ### Question 3   HELP
-(HELP what it mean by metric????)  
+(HELP what it mean by metric????)  ANY MEASURE OF THE MODELS PERFORMANCE accuracy, f1 score - classification
+mse and root mse - regression
 
 ### Question 4   
 
@@ -42,12 +43,14 @@ Mechanistic (aka parametric) predictive models assume that there are some parame
 
 Based on Lecture: Course Overview and Introduction slide 38, The two model types are different because the mechanistic type assumes parameters and a parametric form of f whereas the empirically-driven type does not make any assumptions about parameters or f. Also, mechanistic model types require fewer observations than empirically-driven model types. Because of this difference, mechanistic model types require more parameters to be more flexible, while empirically-driven model types are much more flexible by default. However, according to Lecture: Course Overview and Introduction slide 38, the two model types can be similar in that these two model types may both lead to overfitting. In a mechanistic type model, if there are too many parameters, the model may become so flexible that it also fits random noise, which is overfitting. In an empirically-drive type model, since the model type is already much more flexible by default, it is more susceptible to overfitting by default as well.    
 
-*(HELP IS THIS JUST OPINION???)*Mechanistic model is easier to understand because assumptions can be made about the model whereas in empirically-driven models, everything must be deduced from the data. 
+( IS THIS JUST OPINION???)Mechanistic model is easier to understand because assumptions can be made about the model whereas in empirically-driven models, everything must be deduced from the data. 
 
-*(HELP what is bias-variance tradeoff)*  
+Mechanistic models tend to be easier to explain and empirically driven can become a lot harder to explain
+
+(what is bias-variance tradeoff)  
 The bias-variance tradeoff is related to the use of mechanistic and empirically driven models in that the model type that you use may affect the bias-variance tradeoff. If a more empirically-driven model is used, such as drawing a curve that passes through every training observation, the method would have extremely low bias but high variance according to textbook page 36. If fitted to observations outside of the training set, the empirically-driven model would not be as accurate (because of overfitting). However, if a more mechanistic model is used, such as fitting a horizontal line to the data, the method might have very low variance but high bias according to textbook page 36. Using a more mechanistic model would allow for the training observations to be less fit to the chosen model, but using observations outside of the training set would not make the mechanistic model decrease in accuracy as with the empirically-driven model.  
 
-### Question 6  HELP 
+### Question 6 
 
 "Given a voter’s profile/data, how likely is it that they will vote in favor of the candidate?"  
 This question is predictive because the campaign is attempting to predict the likelihood of the voter voting in favor of the candidate based on the features (predictors) presented in their profile/data. The aim is to predict Y, the likelihood that the voter will vote in favor of the candidate, with minimum reducible error (which is what a predictive model is from Lecture: Course Overview and Introduction slide 39).  
@@ -87,7 +90,8 @@ There is a strong positive relationship between hwy and cty. This means that, as
 
 ### Exercise 3  HELP (descending order??)
 ```{r}
-manufacturer_bar <- ggplot(mpg, aes(y=manufacturer)) +
+library(forcats)
+manufacturer_bar <- ggplot(mpg, aes(y=fct_infreq(manufacturer))) +
   geom_bar()
 
 #NEED TO USE REORDER() WITHIN AES()? --> HOWWW
@@ -99,7 +103,7 @@ Dodge produced the most cars. Lincoln produced the least cars.
 
 ### Exercise 4  HELP WITH EXPLANATION
 ```{r}
-hwy_cyl_boxplot <- ggplot(mpg, aes(x=hwy, group=cyl, fill=cyl)) +
+hwy_cyl_boxplot <- ggplot(mpg, aes(x=hwy, y=cyl, group=cyl, fill=cyl)) +
   geom_boxplot()
 
 hwy_cyl_boxplot
@@ -110,8 +114,17 @@ There is an apparent pattern shown with the boxplots. The highway miles per gall
 ```{r}
 head(mpg)
 M <- cor(mpg[, !(names(mpg) %in% c("manufacturer", "model", "trans", "drv","fl", "class"))])
-corrplot(M,  method="square", type="lower", diag=FALSE)
+corrplot(M, method="number", type="lower")
 ```
+
+Each of the variables has a perfect positive correlation with itself, which makes sense because all of the values are the same.  
+
+Year appears to have no correlation (with cty and hwy) or a very weak positive correlation (with cyl and displ) with all the variables. This indicates that each of the variables do not really vary depending on the year.  
+
+
+
+
+
 cyl (number of cylinders) & displ (engine displacement) and hwy (highway miles per gallon) & cty (city miles per gallon) appear to be negatively correlated. According to Wikipedia, engine displacement is the measure of cylinder volume swept by all of the pistons of a piston engine, without including the combustion chamber. So, it would make sense that, as cyl increases, displ increases because there is more cylinder volume with more cylinders. Also, it makes sense that hwy and cty are positively correlated because, if individuals in certain cities are getting more miles per gallon on the highway, those same individuals are getting more miles per gallon in their respective cities.  
 
 cty & displ, hwy & displ, cty & cyl, and hwy & cyl are all negatively correlated. According to Wikipedia, the lower the engine displacement, the less fuel an engine may consume. Therefore, it makes sense that cty & displ as well as hwy & displ are negatively correlated. Those with greater engine displacement consume more fuel, so they get fewer miles per gallon. This applies both on the highway and in their respective cities. So, as displ increases, hwy and cty naturally decrease. Also, for a similar reason, it makes sense that cty & cyl and hwy & cyl are negatively correlated because cyl & displ are positively correlated. So, a greater number of cylinders (which is associated with greater engine displacement) would lead to more fuel consumption. It makes sense that cty & cyl and hwy & cyl are negatively correlated because cars with a greater number of cylinders get fewer miles per gallon on the highway and in their respective cities.  
