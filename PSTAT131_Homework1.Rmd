@@ -17,11 +17,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 From the textbook page 26, supervised learning is when, for each observation of the predictor measurements $x_{i}$, ${i}$ = 1,...,n, there is an associated response measurement $y_{i}$. In this case, the response is the supervisor. Models fitted to supervised learning tend to relate the response to the predictors. However, according to the textbook page 26, unsupervised learning is when, for each observation $i$,= 1,...,n, we observe a vector of measurements $x_{i}$, but no associated response $y_{i}$. We do not have a response variable that can supervise our analysis.  
 
-Supervised and unsupervised learning are mainly different due to the existence of a response variable (the supervisor) for supervised learning and the nonexistence of a response variable (no supervisor) for unsupervised learning.  
+From Professor Coburn's office hours, supervised and unsupervised learning are mainly different due to the existence of a response variable (the supervisor) for supervised learning and the nonexistence of a response variable (no supervisor) for unsupervised learning.  
 
 ### Question 2  
 
-From the textbook page 28, regression models are those based on problems with a quantitative/numerical response whereas classification models are those based on problems involving a qualitative/categorical response (one with K different categories). Regression models are used for continuous outcomes, classification models are used for discrete outcomes.  
+From the textbook page 28, regression models are those based on problems with a quantitative/numerical response whereas classification models are those based on problems involving a qualitative/categorical response (one with K different categories). Regression models are used for continuous outcomes, classification models are used for discrete outcomes. An example of a regression model is a linear regression model, and an example of a classification model is a logistic regression model.    
 
 According to textbook page 29, these two models are both used in machine learning and often, the type of model to be used may be decided based on whether the response is qualitative (classification) or quantitative (regression). However, as mentioned on textbook page 29, whether the predictors are qualitative or quantitative is less important because many statistical methods can be applied regardless of the predictor variable type with proper coding for qualitative predictors in advance.  
 
@@ -72,7 +72,7 @@ hwy_hist <- ggplot(mpg, aes(hwy)) +
 hwy_hist
 ```
 
-The histogram of highway miles per gallon is generally right skewed and bimodal. The two peaks are around 17 mpg and 27 mpg.  
+The histogram of highway miles per gallon is generally right skewed and bimodal. The two peaks are around 17 mpg and 27 mpg. It may also be important to note that the x-axis starts at 10 and ends at ~45.    
 
 ### Exercise 2    
 ```{r}
@@ -86,9 +86,8 @@ There is a strong positive relationship between `hwy` and `cty`. This means that
 
 ### Exercise 3   
 ```{r}
-library(forcats)
-manufacturer_bar <- ggplot(mpg, aes(y=fct_infreq(manufacturer))) +
-  geom_bar()
+manufacturer_bar <- ggplot(mpg, aes(y=reorder(manufacturer, manufacturer, length))) +
+  geom_bar() + labs(y="manufacturer")
 
 manufacturer_bar
 ```
@@ -103,18 +102,17 @@ hwy_cyl_boxplot <- ggplot(mpg, aes(x=hwy, y = cyl, group=cyl)) +
 hwy_cyl_boxplot
 ```
   
-There is an apparent pattern shown with the boxplots. The highway miles per gallon appear to generally decrease as the cylinder count increases. However, at the 5 cylinder count, the general pattern is disrupted as the highway miles per gallon do not show the same general decreasing pattern as the other boxplots. Because the range of the 5 cylinder boxplot is so small, the minimum values are greater than the 4 cylinder boxplot and the maximum values are less than the 6 cylinder boxplot. So, the pattern breaks at the 5 cylinder boxplot. However, the general pattern is still that highway miles per gallon appears to be generally decreasing as number of cylinders increase.    
+There is an apparent pattern shown with the boxplots. The general pattern appears to be that highway miles per gallon appear to generally decrease as the cylinder count increases.  
 
 ### Exercise 5   
 ```{r}
-head(mpg)
 M <- cor(mpg[, !(names(mpg) %in% c("manufacturer", "model", "trans", "drv","fl", "class"))])
 corrplot(M, method="number", type="lower")
 ```
   
 Each of the variables has a perfect positive correlation with itself, which makes sense because all of the values are the same between a variable and itself.   
 
-`year` appears to have no correlation (with `cty` and `hwy`) or a very weak positive correlation (with `cyl` (0.12) and `displ` (0.15)) with all the variables. This indicates that each of the variables do not significantly vary depending on the year.   
+`year` appears to have no correlation (with `cty` and `hwy`) or a very weak positive correlation (with `cyl` (0.12) and `displ` (0.15)) with all the variables. This indicates that each of the variables do not significantly change (increase or decrease) depending on the year.   
 
 `hwy` & `cty` have a strong positive correlation (0.96), which makes sense because those who get more mpg in any given city will also get more mpg on highways. Driving in the city tends to use a lot of fuel due to the constant stopping and starting of the car, so it makes sense that a car that gets a lot of mpg in the city will also get more mpg on the highway where there is much less exertion on the car. Although a given car does exert more energy in terms of having to use higher speeds on the highway, which is why highway miles per gallon are not extremely higher than city miles per gallon, but still higher.   
 
