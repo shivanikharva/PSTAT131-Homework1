@@ -71,7 +71,7 @@ hwy_hist <- ggplot(mpg, aes(hwy)) +
   
 hwy_hist
 ```
-**Describe:**  
+
 The histogram of highway miles per gallon is generally right skewed and bimodal. The two peaks are around 17 mpg and 27 mpg.  
 
 ### Exercise 2    
@@ -81,7 +81,7 @@ hwy_cty_scatter <- ggplot(mpg, aes(x=hwy, y=cty)) +
 
 hwy_cty_scatter
 ```
-**Describe:**  
+    
 There is a strong positive relationship between `hwy` and `cty`. This means that, as the city miles per gallon increases, the highway miles per gallon also increases. Intuitively, this makes sense because those who get more mpg in any given city will also get more mpg on highways. Driving in the city tends to use a lot of fuel due to the constant stopping and starting of the car, so it makes sense that a car that gets a lot of mpg in the city will also get more mpg on the highway where there is much less exertion on the car. Although a given car does exert more energy in terms of having to use higher speeds on the highway, which is why highway miles per gallon are not extremely higher than city miles per gallon, but still higher.    
 
 ### Exercise 3   
@@ -92,7 +92,7 @@ manufacturer_bar <- ggplot(mpg, aes(y=fct_infreq(manufacturer))) +
 
 manufacturer_bar
 ```
-
+  
 Dodge produced the most cars. Lincoln produced the least cars.  
 
 ### Exercise 4   
@@ -102,6 +102,7 @@ hwy_cyl_boxplot <- ggplot(mpg, aes(x=hwy, y = cyl, group=cyl)) +
 
 hwy_cyl_boxplot
 ```
+  
 There is an apparent pattern shown with the boxplots. The highway miles per gallon appear to generally decrease as the cylinder count increases. However, at the 5 cylinder count, the general pattern is disrupted as the highway miles per gallon do not show the same general decreasing pattern as the other boxplots. Because the range of the 5 cylinder boxplot is so small, the minimum values are greater than the 4 cylinder boxplot and the maximum values are less than the 6 cylinder boxplot. So, the pattern breaks at the 5 cylinder boxplot. However, the general pattern is still that highway miles per gallon appears to be generally decreasing as number of cylinders increase.    
 
 ### Exercise 5   
@@ -110,7 +111,7 @@ head(mpg)
 M <- cor(mpg[, !(names(mpg) %in% c("manufacturer", "model", "trans", "drv","fl", "class"))])
 corrplot(M, method="number", type="lower")
 ```
-
+  
 Each of the variables has a perfect positive correlation with itself, which makes sense because all of the values are the same between a variable and itself.   
 
 `year` appears to have no correlation (with `cty` and `hwy`) or a very weak positive correlation (with `cyl` (0.12) and `displ` (0.15)) with all the variables. This indicates that each of the variables do not significantly vary depending on the year.   
